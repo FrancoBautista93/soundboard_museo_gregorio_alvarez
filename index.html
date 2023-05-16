@@ -35,6 +35,36 @@
     </script>
   </div>
 
+  <h2>Wada</h2>
+  <div class="soundboard">
+    <!-- Generate buttons for Wada -->
+    <script>
+      for (let i = 1; i <= 10; i++) {
+        document.write(`<button onclick="playSound('Wada/wad ${i}.wav')">Sound ${i}</button>`);
+      }
+    </script>
+  </div>
+
+  <h2>Pilolay</h2>
+  <div class="soundboard">
+    <!-- Generate buttons for Pilolay -->
+    <script>
+      for (let i = 1; i <= 10; i++) {
+        document.write(`<button onclick="playSound('Pilolay/Pil ${i}.wav')">Sound ${i}</button>`);
+      }
+    </script>
+  </div>
+
+  <h2>Pifilca</h2>
+  <div class="soundboard">
+    <!-- Generate buttons for Pifilca -->
+    <script>
+      for (let i = 1; i <= 10; i++) {
+        document.write(`<button onclick="playSound('Pifilca/Pif ${i}.wav')">Sound ${i}</button>`);
+      }
+    </script>
+  </div>
+
   <script>
     function playSound(soundPath) {
       const audio = new Audio(soundPath);
