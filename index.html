@@ -1,36 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Web Soundboard</title>
+  <title>Mapuche Soundboard</title>
   <style>
+    body {
+      background-color: #FEEBC8;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333333;
+    }
+
     .soundboard {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      justify-content: center;
+      margin-top: 30px;
     }
 
     .soundboard button {
-      width: 100px;
-      height: 40px;
-      background-color: #f5f5f5;
+      width: 150px;
+      height: 150px;
+      background-color: #FFDAB9;
       border: none;
       cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
     }
 
-    .soundboard button:hover {
-      background-color: #e0e0e0;
+    .soundboard button img {
+      max-width: 80%;
+      max-height: 80%;
     }
   </style>
 </head>
 <body>
-  <h1>Web Soundboard</h1>
+  <h1>Mapuche Soundboard</h1>
 
   <h2>Trutruka</h2>
   <div class="soundboard">
     <!-- Generate buttons for Trutruka -->
     <script>
       for (let i = 1; i <= 10; i++) {
-        document.write(`<button onclick="playSound('Trutruka/Tru ${i}.wav')">Sound ${i}</button>`);
+        document.write(`
+          <button onclick="playSound('Trutruka/Tru ${i}.wav')">
+            <img src="trutruka/image${i}.jpg" alt="Trutruka ${i}">
+            Sound ${i}
+          </button>
+        `);
       }
     </script>
   </div>
@@ -40,7 +63,12 @@
     <!-- Generate buttons for Wada -->
     <script>
       for (let i = 1; i <= 10; i++) {
-        document.write(`<button onclick="playSound('Wada/wad ${i}.wav')">Sound ${i}</button>`);
+        document.write(`
+          <button onclick="playSound('Wada/wad ${i}.wav')">
+            <img src="wada/image${i}.jpg" alt="Wada ${i}">
+            Sound ${i}
+          </button>
+        `);
       }
     </script>
   </div>
@@ -50,7 +78,12 @@
     <!-- Generate buttons for Pilolay -->
     <script>
       for (let i = 1; i <= 10; i++) {
-        document.write(`<button onclick="playSound('Pilolay/Pil ${i}.wav')">Sound ${i}</button>`);
+        document.write(`
+          <button onclick="playSound('Pilolay/Pil ${i}.wav')">
+            <img src="pilolay/image${i}.jpg" alt="Pilolay ${i}">
+            Sound ${i}
+          </button>
+        `);
       }
     </script>
   </div>
@@ -60,7 +93,12 @@
     <!-- Generate buttons for Pifilca -->
     <script>
       for (let i = 1; i <= 10; i++) {
-        document.write(`<button onclick="playSound('Pifilca/Pif ${i}.wav')">Sound ${i}</button>`);
+        document.write(`
+          <button onclick="playSound('Pifilca/Pif ${i}.wav')">
+            <img src="pifilca/image${i}.jpg" alt="Pifilca ${i}">
+            Sound ${i}
+          </button>
+        `);
       }
     </script>
   </div>
