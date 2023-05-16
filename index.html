@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Soundboard</title>
+  <style>
+    .soundboard {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .soundboard audio {
+      width: 100px;
+      height: 40px;
+      background-color: #f5f5f5;
+      border: none;
+      cursor: pointer;
+    }
+
+    .soundboard audio:hover {
+      background-color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Soundboard</h1>
+
+  <h2>Trutruka</h2>
+  <div class="soundboard">
+    <audio src="Trutruka/Tru 1.wav" preload="auto"></audio>
+    <audio src="Trutruka/Tru 2.wav" preload="auto"></audio>
+    <audio src="Trutruka/Tru 3.wav" preload="auto"></audio>
+    <audio src="Trutruka/Tru 4.wav" preload="auto"></audio>
+  </div>
+
+  <script>
+    const soundButtons = document.querySelectorAll('.soundboard audio');
+    soundButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        button.currentTime = 0;
+        button.play();
+      });
+    });
+  </script>
+</body>
+</html>
