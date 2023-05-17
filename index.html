@@ -4,54 +4,70 @@
   <title>Instrumentos</title>
   <style>
     body {
-      background-image: url('Images/background.png');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-color: #85071f;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
+  background-image: url('Images/background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #85071f;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0; /* Add this to remove default body margin */
+  padding: 0; /* Add this to remove default body padding */
+}
 
-    h1 {
-      color: #FFFFFF;
-    }
-    
-    h2 {
-      color: #FFFFFF;
-    }
+h1 {
+  color: #FFFFFF;
+}
 
-    .soundboard-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 10%;
-    }
+h2 {
+  color: #FFFFFF;
+}
 
-    .instrument-container {
-      margin-bottom: 20px;
-    }
+.soundboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+}
 
-    .soundboard-row {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 10px;
-    }
+.instrument-container {
+  margin-bottom: 20px;
+}
 
-    .soundboard button {
-      width: 150px;
-      height: 150px;
-      background-color: #ffd700;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      border-radius: 10px;
-      font-size: 20px;
-      color: #FFFFFF;
-    }
+.soundboard-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.soundboard button {
+  width: 150px;
+  height: 150px;
+  background-color: #ffd700;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+  color: #FFFFFF;
+}
+
+/* Add this rule to apply background color */
+.soundboard button:focus {
+  outline: none;
+}
+
+/* Add this rule to increase button size on smaller screens */
+@media (max-width: 768px) {
+  .soundboard button {
+    width: 120px;
+    height: 120px;
+    font-size: 16px;
+  }
+}
     
   </style>
 </head>
