@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Instrumentos</title>
+  <title>Soundboard</title>
   <style>
     body {
       background-image: url('Images/background.png');
@@ -67,55 +67,69 @@
     }
     
   </style>
+  <script>
+    window.onload = function() {
+      var boxLinks = document.getElementsByClassName('box-link');
+      for (var i = 0; i < boxLinks.length; i++) {
+        boxLinks[i].addEventListener('click', updateSoundboard);
+      }
+      
+      var soundButtons = document.querySelectorAll('.soundboard button');
+      for (var j = 0; j < soundButtons.length; j++) {
+        soundButtons[j].addEventListener('click', updateURL);
+      }
+    }
+
+    function updateSoundboard(e) {
+      var soundboards = document.getElementsByClassName('soundboard');
+      for (var i = 0; i < soundboards.length; i++) {
+        soundboards[i].style.display = 'none';
+      }
+      
+      var targetId = e.target.dataset.target;
+      var soundboard = document.getElementById(targetId);
+      soundboard.style.display = 'block';
+      
+      var url = window.location.href.split('#')[0];
+      window.history.pushState({}, '', url + '#' + targetId);
+    }
+
+    function updateURL(e) {
+      var targetId = e.target.parentNode.parentNode.id;
+      var soundIndex = Array.from(e.target.parentNode.children).indexOf(e.target) + 1;
+      var url = window.location.href.split('#')[0];
+      var newURL = url + '#' + targetId + '/' + soundIndex;
+      window.history.pushState({}, '', newURL);
+    }
+  </script>
 </head>
 <body>
   <div class="box-container">
     <div class="box">
       <h2>Instrumentos</h2>
       <ul>
-        <li><a href="#trutruka">Trutruka</a></li>
-        <li><a href="#wada">Wada</a></li>
-        <li><a href="#pifilca">Pifilca</a></li>
-        <li><a href="#pilolay">Pilolay</a></li>
+        <li><a href="#" class="box-link" data-target="trutruka">Trutruka</a></li>
+        <li><a href="#" class="box-link" data-target="wada">Wada</a></li>
+        <li><a href="#" class="box-link" data-target="pifilca">Pifilca</a></li>
+        <li><a href="#" class="box-link" data-target="pilolay">Pilolay</a></li>
       </ul>
     </div>
 
     <div class="box">
       <h2>Relatos</h2>
       <ul>
-        <li><a href="#relato1">Relato 1</a></li>
-        <li><a href="#relato2">Relato 2</a></li>
-        <li><a href="#relato3">Relato 3</a></li>
-        <li><a href="#relato4">Relato 4</a></li>
-        <li><a href="#relato5">Relato 5</a></li>
-        <li><a href="#relato6">Relato 6</a></li>
+        <li><a href="#" class="box-link" data-target="relatos">Relatos</a></li>
       </ul>
     </div>
 
     <div class="box">
       <h2>Lenguaje</h2>
       <ul>
-        <li><a href="#lenguaje1">Lenguaje 1</a></li>
-        <li><a href="#lenguaje2">Lenguaje 2</a></li>
-        <li><a href="#lenguaje3">Lenguaje 3</a></li>
-        <li><a href="#lenguaje4">Lenguaje 4</a></li>
-        <li><a href="#lenguaje5">Lenguaje 5</a></li>
-        <li><a href="#lenguaje6">Lenguaje 6</a></li>
-        <li><a href="#lenguaje7">Lenguaje 7</a></li>
-        <li><a href="#lenguaje8">Lenguaje 8</a></li>
-        <li><a href="#lenguaje9">Lenguaje 9</a></li>
-        <li><a href="#lenguaje10">Lenguaje 10</a></li>
-        <li><a href="#lenguaje11">Lenguaje 11</a></li>
-        <li><a href="#lenguaje12">Lenguaje 12</a></li>
-        <li><a href="#lenguaje13">Lenguaje 13</a></li>
-        <li><a href="#lenguaje14">Lenguaje 14</a></li>
-        <li><a href="#lenguaje15">Lenguaje 15</a></li>
-        <li><a href="#lenguaje16">Lenguaje 16</a></li>
+        <li><a href="#" class="box-link" data-target="lenguaje">Lenguaje</a></li>
       </ul>
     </div>
 
-    <div class="box">
-      <h2>Trutruka</h2>
+    <div class="box" id="soundboard-container">
       <div class="soundboard" id="trutruka">
         <!-- Generate buttons for Trutruka -->
         <script>
@@ -128,10 +142,7 @@
           }
         </script>
       </div>
-    </div>
 
-    <div class="box">
-      <h2>Wada</h2>
       <div class="soundboard" id="wada">
         <!-- Generate buttons for Wada -->
         <script>
@@ -144,10 +155,7 @@
           }
         </script>
       </div>
-    </div>
 
-    <div class="box">
-      <h2>Pifilca</h2>
       <div class="soundboard" id="pifilca">
         <!-- Generate buttons for Pifilca -->
         <script>
@@ -160,10 +168,7 @@
           }
         </script>
       </div>
-    </div>
 
-    <div class="box">
-      <h2>Pilolay</h2>
       <div class="soundboard" id="pilolay">
         <!-- Generate buttons for Pilolay -->
         <script>
@@ -176,10 +181,7 @@
           }
         </script>
       </div>
-    </div>
 
-    <div class="box">
-      <h2>Relatos</h2>
       <div class="soundboard" id="relatos">
         <!-- Generate buttons for Relatos -->
         <script>
@@ -192,10 +194,7 @@
           }
         </script>
       </div>
-    </div>
 
-    <div class="box">
-      <h2>Lenguaje</h2>
       <div class="soundboard" id="lenguaje">
         <!-- Generate buttons for Lenguaje -->
         <script>
@@ -215,6 +214,32 @@
     function playSound(soundPath) {
       const audio = new Audio(soundPath);
       audio.play();
+    }
+
+    window.onload = function() {
+      var hash = window.location.hash.substr(1);
+      if (hash) {
+        var target = document.getElementById(hash);
+        if (target) {
+          var boxLinks = document.getElementsByClassName('box-link');
+          for (var i = 0; i < boxLinks.length; i++) {
+            var targetId = boxLinks[i].dataset.target;
+            if (targetId === hash) {
+              updateSoundboard({ target: boxLinks[i] });
+              break;
+            }
+          }
+
+          var soundIndex = window.location.href.split('/').pop();
+          if (soundIndex > 0) {
+            var soundButtons = target.getElementsByTagName('button');
+            if (soundIndex <= soundButtons.length) {
+              var soundButton = soundButtons[soundIndex - 1];
+              soundButton.click();
+            }
+          }
+        }
+      }
     }
   </script>
 </body>
