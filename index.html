@@ -14,20 +14,24 @@
 
     h1 {
       color: #000000;
-      margin-top: 17%
+      margin-top: 17%;
     }
     
-     h2 {
+    h2 {
       color: #000000;
-      margin-top: 5px 
-      margin-bottom: 5px
+      margin-top: 5px;
+      margin-bottom: 5px;
     }
 
     .soundboard {
-      display: flex;
+      display: none;
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
+    }
+
+    .soundboard.active {
+      display: flex;
     }
 
     .soundboard button {
@@ -49,69 +53,121 @@
   </style>
 </head>
 <body>
-  <h1>Instrumentos</h1>
+  <section id="instrumentos">
+    <h1>Instrumentos</h1>
 
-  <h2>Trutruka</h2>
-  <div class="soundboard">
-    <!-- Generate buttons for Trutruka -->
-    <script>
-      for (let i = 1; i <= 8; i++) {
-        document.write(`
-          <button onclick="playSound('Trutruka/Tru ${i}.wav')">
-            ${i}
-          </button>
-        `);
-      }
-    </script>
-  </div>
+    <h2>Trutruka</h2>
+    <div class="soundboard trutruka">
+      <!-- Generate buttons for Trutruka -->
+      <script>
+        for (let i = 1; i <= 8; i++) {
+          document.write(`
+            <button onclick="playSound('Trutruka/Tru ${i}.wav')">
+              ${i}
+            </button>
+          `);
+        }
+      </script>
+    </div>
 
-  <h2>Wada</h2>
-  <div class="soundboard">
-    <!-- Generate buttons for Wada -->
-    <script>
-      for (let i = 1; i <= 8; i++) {
-        document.write(`
-          <button onclick="playSound('Wada/Wad ${i}.wav')">
-            ${i}
-          </button>
-        `);
-      }
-    </script>
-  </div>
+    <h2>Wada</h2>
+    <div class="soundboard wada">
+      <!-- Generate buttons for Wada -->
+      <script>
+        for (let i = 1; i <= 8; i++) {
+          document.write(`
+            <button onclick="playSound('Wada/Wad ${i}.wav')">
+              ${i}
+            </button>
+          `);
+        }
+      </script>
+    </div>
 
-  <h2>Pilolay</h2>
-  <div class="soundboard">
-    <!-- Generate buttons for Pilolay -->
-    <script>
-      for (let i = 1; i <= 8; i++) {
-        document.write(`
-          <button onclick="playSound('Pilolay/Pil ${i}.wav')">
-            ${i}
-          </button>
-        `);
-      }
-    </script>
-  </div>
+    <h2>Pilolay</h2>
+    <div class="soundboard pilolay">
+      <!-- Generate buttons for Pilolay -->
+      <script>
+        for (let i = 1; i <= 8; i++) {
+          document.write(`
+            <button onclick="playSound('Pilolay/Pil ${i}.wav')">
+              ${i}
+            </button>
+          `);
+        }
+      </script>
+    </div>
 
-  <h2>Pifilca</h2>
-  <div class="soundboard">
-    <!-- Generate buttons for Pifilca -->
-    <script>
-      for (let i = 1; i <= 8; i++) {
-        document.write(`
-          <button onclick="playSound('Pifilca/Pif ${i}.wav')">
-            ${i}
-          </button>
-        `);
-      }
-    </script>
-  </div>
+    <h2>Pifilca</h2>
+    <div class="soundboard pifilca">
+      <!-- Generate buttons for Pifilca -->
+      <script>
+        for (let i = 1; i <= 8; i++) {
+          document.write(`
+            <button onclick="playSound('Pifilca/Pif ${i}.wav')">
+              ${i}
+            </button>
+          `);
+        }
+      </script>
+    </div>
+  </section>
+
+  <section id="relatos">
+    <h1>Relatos</h1>
+
+    <div class="soundboard relatos">
+      <!-- Generate buttons for Relatos -->
+      <script>
+        for (let i = 1; i <= 6; i++) {
+          document.write(`
+            <button onclick="playSound('Relatos/Relato ${i}.wav')">
+              ${i}
+            </button>
+          `);
+        }
+      </script>
+    </div>
+  </section>
+
+  <section id="lenguaje">
+    <h1>Lenguaje</h1>
+
+    <div class="soundboard lenguaje">
+      <!-- Generate buttons for Lenguaje -->
+      <script>
+        for (let i = 1; i <= 12; i++) {
+          document.write(`
+            <button onclick="playSound('Lenguaje/Leng ${i}.wav')">
+              ${i}
+            </button>
+          `);
+        }
+      </script>
+    </div>
+  </section>
 
   <script>
     function playSound(soundPath) {
       const audio = new Audio(soundPath);
       audio.play();
     }
+
+    const sections = document.querySelectorAll('section');
+    const soundboards = document.querySelectorAll('.soundboard');
+
+    sections.forEach((section) => {
+      section.addEventListener('click', function() {
+        // Hide all soundboards
+        soundboards.forEach((soundboard) => {
+          soundboard.classList.remove('active');
+        });
+
+        // Show the corresponding soundboard
+        const soundboard = this.querySelector('.soundboard');
+        soundboard.classList.add('active');
+      });
+    });
   </script>
 </body>
 </html>
