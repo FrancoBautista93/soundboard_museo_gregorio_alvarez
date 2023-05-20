@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Soundboard</title>
+  <title>Instrumentos</title>
   <style>
     body {
       background-image: url('Images/background.png');
@@ -14,13 +14,13 @@
 
     h1 {
       color: #000000;
-      margin-top: 17%;
+      margin-top: 17%
     }
     
-    h2 {
+     h2 {
       color: #000000;
-      margin-top: 5px;
-      margin-bottom: 5px;
+      margin-top: 5px 
+      margin-bottom: 5px
     }
 
     .soundboard {
@@ -45,201 +45,72 @@
       color: #FFFFFF;
       text-align: center;
     }
-
-    .box {
-      display: inline-block;
-      width: 20%;
-      height: 100%;
-      background-color: #f2f2f2;
-      border: 1px solid #ccc;
-      text-align: center;
-      vertical-align: top;
-      padding: 10px;
-    }
-
-    .box-container {
-      display: flex;
-      height: 100vh;
-    }
-
-    .box-container .box:first-child {
-      width: 80%;
-    }
     
   </style>
-  <script>
-    window.onload = function() {
-      var boxLinks = document.getElementsByClassName('box-link');
-      for (var i = 0; i < boxLinks.length; i++) {
-        boxLinks[i].addEventListener('click', updateSoundboard);
-      }
-      
-      var soundButtons = document.querySelectorAll('.soundboard button');
-      for (var j = 0; j < soundButtons.length; j++) {
-        soundButtons[j].addEventListener('click', updateURL);
-      }
-    }
-
-    function updateSoundboard(e) {
-      var soundboards = document.getElementsByClassName('soundboard');
-      for (var i = 0; i < soundboards.length; i++) {
-        soundboards[i].style.display = 'none';
-      }
-      
-      var targetId = e.target.dataset.target;
-      var soundboard = document.getElementById(targetId);
-      soundboard.style.display = 'block';
-      
-      var url = window.location.href.split('#')[0];
-      window.history.pushState({}, '', url + '#' + targetId);
-    }
-
-    function updateURL(e) {
-      var targetId = e.target.parentNode.parentNode.id;
-      var soundIndex = Array.from(e.target.parentNode.children).indexOf(e.target) + 1;
-      var url = window.location.href.split('#')[0];
-      var newURL = url + '#' + targetId + '/' + soundIndex;
-      window.history.pushState({}, '', newURL);
-    }
-  </script>
 </head>
 <body>
-  <div class="box-container">
-    <div class="box">
-      <h2>Instrumentos</h2>
-      <ul>
-        <li><a href="#" class="box-link" data-target="trutruka">Trutruka</a></li>
-        <li><a href="#" class="box-link" data-target="wada">Wada</a></li>
-        <li><a href="#" class="box-link" data-target="pifilca">Pifilca</a></li>
-        <li><a href="#" class="box-link" data-target="pilolay">Pilolay</a></li>
-      </ul>
-    </div>
+  <h1>Instrumentos</h1>
 
-    <div class="box">
-      <h2>Relatos</h2>
-      <ul>
-        <li><a href="#" class="box-link" data-target="relatos">Relatos</a></li>
-      </ul>
-    </div>
+  <h2>Trutruka</h2>
+  <div class="soundboard">
+    <!-- Generate buttons for Trutruka -->
+    <script>
+      for (let i = 1; i <= 8; i++) {
+        document.write(`
+          <button onclick="playSound('Trutruka/Tru ${i}.wav')">
+            ${i}
+          </button>
+        `);
+      }
+    </script>
+  </div>
 
-    <div class="box">
-      <h2>Lenguaje</h2>
-      <ul>
-        <li><a href="#" class="box-link" data-target="lenguaje">Lenguaje</a></li>
-      </ul>
-    </div>
+  <h2>Wada</h2>
+  <div class="soundboard">
+    <!-- Generate buttons for Wada -->
+    <script>
+      for (let i = 1; i <= 8; i++) {
+        document.write(`
+          <button onclick="playSound('Wada/Wad ${i}.wav')">
+            ${i}
+          </button>
+        `);
+      }
+    </script>
+  </div>
 
-    <div class="box" id="soundboard-container">
-      <div class="soundboard" id="trutruka">
-        <!-- Generate buttons for Trutruka -->
-        <script>
-          for (let i = 1; i <= 8; i++) {
-            document.write(`
-              <button onclick="playSound('Trutruka/Tru ${i}.wav')">
-                ${i}
-              </button>
-            `);
-          }
-        </script>
-      </div>
+  <h2>Pilolay</h2>
+  <div class="soundboard">
+    <!-- Generate buttons for Pilolay -->
+    <script>
+      for (let i = 1; i <= 8; i++) {
+        document.write(`
+          <button onclick="playSound('Pilolay/Pil ${i}.wav')">
+            ${i}
+          </button>
+        `);
+      }
+    </script>
+  </div>
 
-      <div class="soundboard" id="wada">
-        <!-- Generate buttons for Wada -->
-        <script>
-          for (let i = 1; i <= 8; i++) {
-            document.write(`
-              <button onclick="playSound('Wada/Wad ${i}.wav')">
-                ${i}
-              </button>
-            `);
-          }
-        </script>
-      </div>
-
-      <div class="soundboard" id="pifilca">
-        <!-- Generate buttons for Pifilca -->
-        <script>
-          for (let i = 1; i <= 8; i++) {
-            document.write(`
-              <button onclick="playSound('Pifilca/Pif ${i}.wav')">
-                ${i}
-              </button>
-            `);
-          }
-        </script>
-      </div>
-
-      <div class="soundboard" id="pilolay">
-        <!-- Generate buttons for Pilolay -->
-        <script>
-          for (let i = 1; i <= 8; i++) {
-            document.write(`
-              <button onclick="playSound('Pilolay/Pil ${i}.wav')">
-                ${i}
-              </button>
-            `);
-          }
-        </script>
-      </div>
-
-      <div class="soundboard" id="relatos">
-        <!-- Generate buttons for Relatos -->
-        <script>
-          for (let i = 1; i <= 6; i++) {
-            document.write(`
-              <button onclick="playSound('Relatos/Relato ${i}.wav')">
-                ${i}
-              </button>
-            `);
-          }
-        </script>
-      </div>
-
-      <div class="soundboard" id="lenguaje">
-        <!-- Generate buttons for Lenguaje -->
-        <script>
-          for (let i = 1; i <= 16; i++) {
-            document.write(`
-              <button onclick="playSound('Lenguaje/Leng ${i}.wav')">
-                ${i}
-              </button>
-            `);
-          }
-        </script>
-      </div>
-    </div>
+  <h2>Pifilca</h2>
+  <div class="soundboard">
+    <!-- Generate buttons for Pifilca -->
+    <script>
+      for (let i = 1; i <= 8; i++) {
+        document.write(`
+          <button onclick="playSound('Pifilca/Pif ${i}.wav')">
+            ${i}
+          </button>
+        `);
+      }
+    </script>
   </div>
 
   <script>
     function playSound(soundPath) {
       const audio = new Audio(soundPath);
       audio.play();
-    }
-
-    window.onload = function() {
-      var hash = window.location.hash.substr(1);
-      if (hash) {
-        var target = document.getElementById(hash);
-        if (target) {
-          var boxLinks = document.getElementsByClassName('box-link');
-          for (var i = 0; i < boxLinks.length; i++) {
-            var targetId = boxLinks[i].dataset.target;
-            if (targetId === hash) {
-              updateSoundboard({ target: boxLinks[i] });
-              break;
-            }
-          }
-
-          var soundIndex = window.location.href.split('/').pop();
-          if (soundIndex > 0) {
-            var soundButtons = target.getElementsByTagName('button');
-            if (soundIndex <= soundButtons.length) {
-              var soundButton = soundButtons[soundIndex - 1];
-              soundButton.click();
-            }
-          }
-        }
-      }
     }
   </script>
 </body>
