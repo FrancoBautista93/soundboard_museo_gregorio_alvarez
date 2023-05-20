@@ -24,10 +24,14 @@
     }
 
     .soundboard {
-      display: flex;
+      display: none; /* Hide soundboards by default */
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
+    }
+
+    .soundboard.active {
+      display: flex; /* Show the active soundboard */
     }
 
     .soundboard button {
@@ -49,21 +53,11 @@
   </style>
 </head>
 <body>
-  <section id="relatos">
-    <h1>Relatos</h1>
-    <!-- Add your stories content here -->
-  </section>
-
-  <section id="lenguaje">
-    <h1>Lenguaje</h1>
-    <!-- Add your language content here -->
-  </section>
-
   <section id="instrumentos">
     <h1>Instrumentos</h1>
-
+    
     <h2>Trutruka</h2>
-    <div class="soundboard">
+    <div class="soundboard trutruka">
       <!-- Generate buttons for Trutruka -->
       <script>
         for (let i = 1; i <= 8; i++) {
@@ -77,7 +71,7 @@
     </div>
 
     <h2>Wada</h2>
-    <div class="soundboard">
+    <div class="soundboard wada">
       <!-- Generate buttons for Wada -->
       <script>
         for (let i = 1; i <= 8; i++) {
@@ -91,7 +85,7 @@
     </div>
 
     <h2>Pilolay</h2>
-    <div class="soundboard">
+    <div class="soundboard pilolay">
       <!-- Generate buttons for Pilolay -->
       <script>
         for (let i = 1; i <= 8; i++) {
@@ -105,7 +99,7 @@
     </div>
 
     <h2>Pifilca</h2>
-    <div class="soundboard">
+    <div class="soundboard pifilca">
       <!-- Generate buttons for Pifilca -->
       <script>
         for (let i = 1; i <= 8; i++) {
@@ -119,11 +113,35 @@
     </div>
   </section>
 
+  <section id="relatos">
+    <!-- Relatos section content here -->
+  </section>
+
+  <section id="lenguaje">
+    <!-- Lenguaje section content here -->
+  </section>
+
   <script>
     function playSound(soundPath) {
       const audio = new Audio(soundPath);
       audio.play();
     }
+
+    const sections = document.querySelectorAll('section');
+    const soundboards = document.querySelectorAll('.soundboard');
+
+    sections.forEach((section) => {
+      section.addEventListener('click', function() {
+        // Hide all soundboards
+        soundboards.forEach((soundboard) => {
+          soundboard.classList.remove('active');
+        });
+
+        // Show the corresponding soundboard
+        const soundboard = this.querySelector('.soundboard');
+        soundboard.classList.add('active');
+      });
+    });
   </script>
 </body>
 </html>
